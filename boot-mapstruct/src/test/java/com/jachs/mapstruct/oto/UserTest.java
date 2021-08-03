@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.google.gson.Gson;
 import com.jachs.mapstruct.oto.domain.User;
 import com.jachs.mapstruct.oto.mapper.UserMapper;
+import com.jachs.mapstruct.oto.model.UserModel;
 
 /***
  * 
@@ -28,15 +29,18 @@ public class UserTest {
 	public static void init() {
 		user=new User("user", 12, new Date(), "juich@mkc.com", "pwd123456");
 		
-		User us=new User().builder()
-				.userName("licsa").userAge(15)
-				.createTime(new Date())
-				.eMail("cmkci@kcl.com")
-				.passWorld("pwd124563").build();
+//		User us=new User().builder()
+//				.userName("licsa").userAge(15)
+//				.createTime(new Date())
+//				.eMail("cmkci@kcl.com")
+//				.passWorld("pwd124563").build();
 	}
 	
 	@Test
 	public void test1() {
+		UserModel userModel=userMapper.sourceToTarget(user);
+		
+		
 		System.out.println(gson.toJson(userMapper.sourceToTarget(user)));
 	}
 }
